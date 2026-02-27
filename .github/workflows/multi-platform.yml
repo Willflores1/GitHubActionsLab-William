@@ -1,4 +1,3 @@
-#pr trigger
 name: Workflow 3 - Multi Platform
 
 on:
@@ -7,52 +6,31 @@ on:
 
 jobs:
   ubuntu-job:
-    name: ubuntu-job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Print OS info (Ubuntu)
         run: |
           echo "Runner OS: $RUNNER_OS"
           uname -a
 
-      - name: Create a file and show contents (Ubuntu)
-        run: |
-          echo "Hello from Ubuntu" > os.txt
-          cat os.txt
-
   windows-job:
-    name: windows-job
     runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Print OS info (Windows)
         run: |
           echo "Runner OS: $env:RUNNER_OS"
           systeminfo
 
-      - name: Create a file and show contents (Windows)
-        run: |
-          "Hello from Windows" | Out-File -FilePath os.txt
-          type os.txt
-
   macos-job:
-    name: macos-job
     runs-on: macos-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Print OS info (macOS)
         run: |
           echo "Runner OS: $RUNNER_OS"
           uname -a
-
-      - name: Create a file and show contents (macOS)
-        run: |
-          echo "Hello from macOS" > os.txt
-          cat os.txt
