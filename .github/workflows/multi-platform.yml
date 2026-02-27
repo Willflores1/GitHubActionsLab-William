@@ -1,0 +1,36 @@
+name: Workflow 3 - Multi Platform
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  ubuntu-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Print OS info (Ubuntu)
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          uname -a
+
+  windows-job:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Print OS info (Windows)
+        run: |
+          echo "Runner OS: $env:RUNNER_OS"
+          systeminfo
+
+  macos-job:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Print OS info (macOS)
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          uname -a
